@@ -26,3 +26,15 @@ class FalhaAoReservar(Exception):
     def __init__(self, msg="Erro, falha ao fazer a reserva"):
         self.msg = msg
         super().__init__(self.msg)
+
+#FUNÇÕES
+def listar_reserva():
+    reserva = Reservas.query.all()
+    return reserva
+
+def criar_reserva(): #VINI VAI FAZER
+    # gera_reserva = Reservas(
+    #     id_sala =
+    #)
+    pass
+
