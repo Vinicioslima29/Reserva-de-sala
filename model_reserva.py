@@ -15,3 +15,14 @@ class Reservas (db_serv.Model):
         self.data = data
         self.tipo_de_sala = tipo_de_sala
         self.turma_id = turma_id
+
+#CLASSE PARA AS EXCEÇÕES
+class ReservaJaExiste(Exception):
+    def __init__(self, msg="Erro, essa reserva já existe!"):
+        self.msg = msg
+        super().__init__(self.msg)
+
+class FalhaAoReservar(Exception):
+    def __init__(self, msg="Erro, falha ao fazer a reserva"):
+        self.msg = msg
+        super().__init__(self.msg)
