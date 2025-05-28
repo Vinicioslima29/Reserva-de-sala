@@ -22,3 +22,19 @@ def listar_reservas():
         } for res in reservas
     ])
 
+@bp_reserva.route('/reserva/<int:id_reserva>', methods=["GET"])
+def achar_reserva(id_reserva):
+    reserva = Reserva.query.get(id_reserva)
+    
+    if reserva is None:
+        return jsonify({"msg": "Reserva não encontrada!"}), 404
+    
+    return jsonify([
+        {
+            "id_sala": res.id_sala,
+            "periodo": res.periodo,
+            "data": res.data,
+            "tipo_de_sala": res.tipo_de_sala,
+            "turma_id": res.turma_id,
+        } for res in reserva
+    ])
