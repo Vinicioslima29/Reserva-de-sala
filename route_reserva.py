@@ -38,3 +38,24 @@ def achar_reserva(id_reserva):
             "turma_id": res.turma_id,
         } for res in reserva
     ])
+
+@bp_reserva.route("/reserva", methods=["POST"])
+def criar_reserva():
+    dados = request.json
+    id_turma = dados.get("id_turma")
+
+    if not validar_turma(id_turma):
+        return jsonify({"erro": "Turma não encontrada"}), 400
+
+    reserva = Reserva(
+        id_sala = dados.get("id_sala"),
+        periodo = dados.get("periodo"),
+        data=dados.get("data"),
+        tipo_de_sala = dados.get("tipo_de_sala"),
+        turma_id = dados.get("id_turma")
+    )
+
+    db.session.add(reserva)
+    db.session.commit()
+
+    return jsonify({"msg": "Sua reserva foi criada com sucesso!"}), 201
