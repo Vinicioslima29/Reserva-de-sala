@@ -1,5 +1,6 @@
 from database import db
 
+
 class Reserva(db.Model):
     __tablename__ = 'reserva'
 
