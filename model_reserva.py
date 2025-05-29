@@ -19,3 +19,19 @@ class Reserva(db.Model):
         self.turma_id = turma_id
 
 
+#CLASSES
+class ReservaJaExiste(Exception):
+    def __init__(self, msg="Erro, essa reserva já existe!"):
+        self.msg = msg
+        super().__init__(self.msg)
+
+class FalhaAoReservar(Exception):
+    def __init__(self, msg="Erro, falha ao fazer a reserva"):
+        self.msg = msg
+        super().__init__(self.msg)
+
+def listar_reserva():
+    reserva = Reserva.query.all()
+    return reserva
+
+
