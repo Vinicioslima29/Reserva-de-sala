@@ -5,8 +5,8 @@ from database import db
 
 bp_reserva = Blueprint('bp_reserva', __name__)
 
-def validar_turma(id_turma):
-    resposta = requests.get(f"http://localhost:5002/turma/{id_turma}")
+def validar_turma(turma_id):
+    resposta = requests.get(f"http://localhost:5002/turma/{turma_id}")
     return resposta.status_code == 200
 
 @bp_reserva.route('/reserva', methods=['GET'])
@@ -42,9 +42,9 @@ def achar_reserva(id_reserva):
 @bp_reserva.route("/reserva", methods=["POST"])
 def criar_reserva():
     dados = request.json
-    id_turma = dados.get("id_turma")
+    turma_id = dados.get("turma_id")
 
-    if not validar_turma(id_turma):
+    if not validar_turma(turma_id):
         return jsonify({"erro": "Turma não encontrada"}), 400
 
     reserva = Reserva(
@@ -52,7 +52,7 @@ def criar_reserva():
         periodo = dados.get("periodo"),
         data=dados.get("data"),
         tipo_de_sala = dados.get("tipo_de_sala"),
-        turma_id = dados.get("id_turma")
+        turma_id = dados.get("turma_id")
     )
 
     db.session.add(reserva)

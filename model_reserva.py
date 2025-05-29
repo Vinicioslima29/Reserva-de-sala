@@ -35,3 +35,16 @@ def listar_reserva():
     return reserva
 
 
+def criar_reserva(nova_reserva):
+    nova_reserva = Reserva(
+        id_sala=nova_reserva['id_sala'], 
+        periodo=nova_reserva['periodo'], 
+        data=nova_reserva['data'], 
+        tipo_de_sala=nova_reserva['tipo_de_sala'], 
+        turma_id=nova_reserva['turma_id']
+
+    )
+
+    db.session.add(nova_reserva)
+    db.session.commit()
+    return {"Reserva criada com sucesso!"}, 200
