@@ -25,11 +25,14 @@ class ReservaJaExiste(Exception):
         self.msg = msg
         super().__init__(self.msg)
 
-class FalhaAoReservar(Exception):
-    def __init__(self, msg="Erro, falha ao fazer a reserva"):
+class ReservaNaoEncontrada(Exception):
+    def __init__(self, msg="Erro, esta reserva já existe!"):
         self.msg = msg
         super().__init__(self.msg)
 
+
+
+#FUNÇÕES
 def listar_reserva():
     reserva = Reserva.query.all()
     return reserva
