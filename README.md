@@ -1,4 +1,4 @@
-<font size="7">**API de Reserva de Salas**</font>
+># API DE RESERVA DE SALAS
 
 
 Este repositório contém uma API de Reserva de Salas, desenvolvida com Flask e SQLAlchemy.
