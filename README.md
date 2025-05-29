@@ -84,7 +84,7 @@ Utilizado como framework web para gerenciar requisições HTTP e lógica de neg�
 <br>
 <br>
 <div align="center">
-  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="Logo" width="">
+  <img src="https://img.shields.io/badge/SQLAlchemy-FF6F61?style=for-the-badge&logo=sqlalchemy&logoColor=white" alt="Logo" width="">
 </div>
 Gerencia o acesso ao banco de dados relacional, permitindo mapeamento objeto-relacional (ORM).
 
